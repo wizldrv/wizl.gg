@@ -14,80 +14,18 @@
             align-items: center;
             height: 100vh;
             font-family: "Comic Sans MS", cursive;
-            flex-direction: column;
-            gap: 20px;
         }
         
         h1 {
-            font-size: 120px;
+            font-size: 200px;
             color: black;
             margin: 0;
             font-weight: bold;
-        }
-        
-        #features {
-            display: none;
-            text-align: center;
-            color: black;
-            font-size: 18px;
-            max-width: 400px;
-        }
-        
-        #features.visible {
-            display: block;
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 10px 0;
-        }
-        
-        .feature-list li {
-            padding: 8px;
-            margin: 5px 0;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
-        }
-        
-        .server-status {
-            font-size: 14px;
-            color: #666;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <h1>wizl</h1>
-    <div id="features">
-        <h2>✨ Server Features</h2>
-        <ul id="feature-list" class="feature-list"></ul>
-        <p class="server-status">Backend server is running!</p>
-    </div>
-    
-    <script>
-        // Try to load features from the backend server
-        fetch('/api/features', { timeout: 2000 })
-            .then(response => {
-                if (!response.ok) throw new Error('Server not available');
-                return response.json();
-            })
-            .then(data => {
-                // Backend is running - display features
-                const featuresList = document.getElementById('feature-list');
-                const featuresContainer = document.getElementById('features');
-                
-                data.features.forEach(feature => {
-                    const li = document.createElement('li');
-                    li.textContent = feature;
-                    featuresList.appendChild(li);
-                });
-                
-                featuresContainer.classList.add('visible');
-            })
-            .catch(error => {
-                // Backend is not running - just show the main content
-                console.log('Backend not available:', error.message);
-            });
-    </script>
 </body>
 </html>

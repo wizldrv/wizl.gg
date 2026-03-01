@@ -15,4 +15,6 @@ def get_features():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Production: debug=False, host configured for shared hosting
+    debug_mode = os.getenv('FLASK_ENV') == 'development'
+    app.run(debug=debug_mode, host='127.0.0.1', port=5000)
